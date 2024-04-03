@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="500.0" prefWidth="400.0" spacing="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="org.example.cs215project.Controller">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <children>
+      <Label text="Input String:" />
+      <TextArea fx:id="inputField" prefHeight="200.0" prefWidth="200.0" />
+      <ChoiceBox fx:id="compressOption" prefWidth="150.0" />
+      <Button fx:id="compressButton" mnemonicParsing="false" onAction="#onCompressButtonClick" text="Compress" />
+      <Label text="Compressed String:" />
+      <TextArea fx:id="compressField" prefHeight="200.0" prefWidth="200.0" />
+      <ChoiceBox fx:id="decompressOption" prefWidth="150.0" />
+      <Button fx:id="decompressButton" mnemonicParsing="false" onAction="#onDecompressButtonClick" text="Decompress" />
+      <Label text="Decompressed String:" />
+      <TextArea fx:id="decompressField" prefHeight="200.0" prefWidth="200.0" />
+      <Label fx:id="timeLabel" text="Time:" />
+   </children>
+</VBox>
