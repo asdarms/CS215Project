@@ -12,12 +12,8 @@ public class Methods {
         return "2134";
     }
 
-    public static String transformAndConquerCompress(String input) {
-        return "transformAndConquerCompress";
-    }
-
     // The following is an implementation of the LZW compression algorithm adapted from https://github.com/tonyking97/java-lzw-compression/tree/master
-    public static String greedyTechniqueCompress(String input) {
+    public static String transformAndConquerCompress(String input) {
         HashMap<String, Integer> dictionary = new LinkedHashMap<>();
         String[] data = (input + "").split("");
         String out = "";
@@ -53,16 +49,16 @@ public class Methods {
         return out;
     }
 
+    public static String greedyTechniqueCompress(String input) {
+        return "greedyTechniqueCompress";
+    }
+
     public static String bruteForceDecompress(String input) {
         return "bruteForceDecompress";
     }
 
-    public static String transformAndConquerDecompress(String input) {
-        return "transformAndConquerDecompress";
-    }
-
     // The following is an implementation of the LZW decompression algorithm adapted from https://github.com/tonyking97/java-lzw-compression/tree/master
-    public static String greedyTechniqueDecompress(String input) {
+    public static String transformAndConquerDecompress(String input) {
         HashMap<Integer, String> dictionary = new LinkedHashMap<>();
         String[] data = (input + "").split("");
         String currentChar = data[0];
@@ -88,5 +84,9 @@ public class Methods {
             oldPhrase = phrase;
         }
         return out;
+    }
+
+    public static String greedyTechniqueDecompress(String input) {
+        return "greedyTechniqueDecompress";
     }
 }
