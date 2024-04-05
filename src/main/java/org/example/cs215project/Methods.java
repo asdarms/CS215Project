@@ -8,12 +8,28 @@ import java.util.LinkedHashMap;
 public class Methods {
 
     public static String bruteForceCompress(String input) {
+        int n = input.length();
+        StringBuilder output = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            // count occurrences of current character
+            int count = 1;
+            while (i < (n - 1)
+                    && input.charAt(i) == input.charAt(i + 1)) {
+                count++;
+                i++;
+            }
+            // append character and its count
+            output.append(input.charAt(i)).append(count);
+        }
+        return output.toString();
+    }
 
-        return "2134";
+    public static String transformAndConquerCompress(String input) {
+        return "214";
     }
 
     // The following is an implementation of the LZW compression algorithm adapted from https://github.com/tonyking97/java-lzw-compression/tree/master
-    public static String transformAndConquerCompress(String input) {
+    public static String greedyTechniqueCompress(String input) {
         HashMap<String, Integer> dictionary = new LinkedHashMap<>();
         String[] data = (input + "").split("");
         String out = "";
@@ -49,16 +65,16 @@ public class Methods {
         return out;
     }
 
-    public static String greedyTechniqueCompress(String input) {
-        return "greedyTechniqueCompress";
-    }
-
     public static String bruteForceDecompress(String input) {
         return "bruteForceDecompress";
     }
 
-    // The following is an implementation of the LZW decompression algorithm adapted from https://github.com/tonyking97/java-lzw-compression/tree/master
     public static String transformAndConquerDecompress(String input) {
+        return "13124";
+    }
+
+    // The following is an implementation of the LZW decompression algorithm adapted from https://github.com/tonyking97/java-lzw-compression/tree/master
+    public static String greedyTechniqueDecompress(String input) {
         HashMap<Integer, String> dictionary = new LinkedHashMap<>();
         String[] data = (input + "").split("");
         String currentChar = data[0];
@@ -84,9 +100,5 @@ public class Methods {
             oldPhrase = phrase;
         }
         return out;
-    }
-
-    public static String greedyTechniqueDecompress(String input) {
-        return "greedyTechniqueDecompress";
     }
 }

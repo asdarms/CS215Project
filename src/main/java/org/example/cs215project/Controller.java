@@ -47,7 +47,7 @@ public class Controller implements Initializable {
                 compressField.setText(Methods.greedyTechniqueCompress(inputField.getText()));
                 break;
         }
-        updateTime(System.currentTimeMillis() - beginTime);
+        updateTime(System.currentTimeMillis() - beginTime, 0);
     }
 
     @FXML
@@ -64,12 +64,17 @@ public class Controller implements Initializable {
                 decompressField.setText(Methods.greedyTechniqueDecompress(compressField.getText()));
                 break;
         }
-        updateTime(System.currentTimeMillis() - beginTime);
+        updateTime(System.currentTimeMillis() - beginTime, 1);
     }
 
     @FXML
-    protected void updateTime(long time) {
-        timeLabel.setText("Time: " + time + " ms");
+    protected void updateTime(long time, int mode) {
+        String compressText = "";
+        if (mode == 0) {
+            double compressionRatio = inputField.getLength() / compressField.getLength();
+            compressText = "Compression Ratio: " + compressionRatio + "%";
+        }
+        timeLabel.setText("Time: " + time + " ms " + compressText);
     }
 
 }
