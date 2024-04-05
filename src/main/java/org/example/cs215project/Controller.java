@@ -15,22 +15,16 @@ public class Controller implements Initializable {
     @FXML
     private Button compressButton;
     @FXML
-    private TextArea compressField;
-    @FXML
-    private ChoiceBox decompressOption;
-    @FXML
     private Button decompressButton;
     @FXML
-    private TextArea decompressField;
+    private TextArea outputField;
     @FXML
     private Label timeLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         compressOption.getItems().addAll("Brute Force", "Transform and Conquer", "Greedy Technique");
-        compressOption.setValue("Select method...");
-        decompressOption.getItems().addAll("Brute Force", "Transform and Conquer", "Greedy Technique");
-        decompressOption.setValue("Select method...");
+        compressOption.setValue("Brute Force");
     }
 
     @FXML
@@ -38,40 +32,43 @@ public class Controller implements Initializable {
         long beginTime = System.currentTimeMillis();
         switch (compressOption.getValue().toString()) {
             case "Brute Force":
-                compressField.setText(Methods.bruteForceCompress(inputField.getText()));
+                outputField.setText(Methods.bruteForceCompress(inputField.getText()));
                 break;
             case "Transform and Conquer":
-                compressField.setText(Methods.transformAndConquerCompress(inputField.getText()));
+                outputField.setText(Methods.transformAndConquerCompress(inputField.getText()));
                 break;
             case "Greedy Technique":
-                compressField.setText(Methods.greedyTechniqueCompress(inputField.getText()));
+                outputField.setText(Methods.greedyTechniqueCompress(inputField.getText()));
                 break;
         }
-        updateTime(System.currentTimeMillis() - beginTime, 0);
+        updateTime(System.currentTimeMillis() - beginTime, "Compress");
     }
 
     @FXML
     protected void onDecompressButtonClick() {
         long beginTime = System.currentTimeMillis();
-        switch (decompressOption.getValue().toString()) {
+        switch (compressOption.getValue().toString()) {
             case "Brute Force":
-                decompressField.setText(Methods.bruteForceDecompress(compressField.getText()));
+                outputField.setText(Methods.bruteForceDecompress(inputField.getText()));
                 break;
             case "Transform and Conquer":
-                decompressField.setText(Methods.transformAndConquerDecompress(compressField.getText()));
+                outputField.setText(Methods.transformAndConquerDecompress(inputField.getText()));
                 break;
             case "Greedy Technique":
-                decompressField.setText(Methods.greedyTechniqueDecompress(compressField.getText()));
+                outputField.setText(Methods.greedyTechniqueDecompress(inputField.getText()));
                 break;
         }
-        updateTime(System.currentTimeMillis() - beginTime, 1);
+        updateTime(System.currentTimeMillis() - beginTime, "Decompress");
     }
 
     @FXML
-    protected void updateTime(long time, int mode) {
+    protected void updateTime(long time, String mode) {
         String compressText = "";
-        if (mode == 0) {
-            double compressionRatio = inputField.getLength() / compressField.getLength();
+        if (mode.equals("Compress")) {
+            double compressionRatio = (double) outputField.getLength() / inputField.getLength() * 100;
+            compressText = "Compression Ratio: " + compressionRatio + "%";
+        } else if (mode.equals("Decompress")) {
+            double compressionRatio = (double) inputField.getLength() / outputField.getLength() * 100;
             compressText = "Compression Ratio: " + compressionRatio + "%";
         }
         timeLabel.setText("Time: " + time + " ms " + compressText);
