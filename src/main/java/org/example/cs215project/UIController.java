@@ -5,9 +5,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class UIController implements Initializable {
     @FXML
     private TextArea inputField;
     @FXML
@@ -32,13 +33,13 @@ public class Controller implements Initializable {
         long beginTime = System.currentTimeMillis();
         switch (compressOption.getValue().toString()) {
             case "Brute Force":
-                outputField.setText(Methods.bruteForceCompress(inputField.getText()));
+                outputField.setText(RunLengthEncoding.compress(inputField.getText()));
                 break;
             case "Transform and Conquer":
-                outputField.setText(Methods.transformAndConquerCompress(inputField.getText()));
+                outputField.setText(BurrowsWheelerTransform.compress(inputField.getText()));
                 break;
             case "Greedy Technique":
-                outputField.setText(Methods.greedyTechniqueCompress(inputField.getText()));
+                outputField.setText(LempelZivWelch.compress(inputField.getText()));
                 break;
         }
         updateTime(System.currentTimeMillis() - beginTime, "Compress");
@@ -49,13 +50,13 @@ public class Controller implements Initializable {
         long beginTime = System.currentTimeMillis();
         switch (compressOption.getValue().toString()) {
             case "Brute Force":
-                outputField.setText(Methods.bruteForceDecompress(inputField.getText()));
+                outputField.setText(RunLengthEncoding.decompress(inputField.getText()));
                 break;
             case "Transform and Conquer":
-                outputField.setText(Methods.transformAndConquerDecompress(inputField.getText()));
+                outputField.setText(BurrowsWheelerTransform.compress(inputField.getText()));
                 break;
             case "Greedy Technique":
-                outputField.setText(Methods.greedyTechniqueDecompress(inputField.getText()));
+                outputField.setText(LempelZivWelch.decompress(inputField.getText()));
                 break;
         }
         updateTime(System.currentTimeMillis() - beginTime, "Decompress");
