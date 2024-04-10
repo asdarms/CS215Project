@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-// Adapted from https://github.com/tonyking97/java-lzw-compression/tree/master
+//Adapted from https://github.com/tonyking97/java-lzw-compression/tree/master
 
 public class LempelZivWelch {
 

@@ -14,7 +14,7 @@
     </padding>
    <children>
       <Label text="Input:" />
-      <TextArea fx:id="inputField" prefHeight="200.0" prefWidth="360.0" />
+      <TextArea fx:id="inputField" prefHeight="600.0" prefWidth="360.0" />
       <ToolBar prefHeight="40.0" prefWidth="200.0">
         <items>
           <Button fx:id="compressButton" mnemonicParsing="false" onAction="#onCompressButtonClick" text="Compress" />
@@ -23,7 +23,7 @@
         </items>
       </ToolBar>
       <Label text="Output:" />
-      <TextArea fx:id="outputField" prefHeight="200.0" prefWidth="200.0" />
+      <TextArea fx:id="outputField" prefHeight="600.0" prefWidth="200.0" />
       <Label fx:id="timeLabel" text="Time: N/A Compression Ratio: N/A" />
    </children>
 </VBox>

@@ -5,7 +5,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class UIController implements Initializable {
@@ -53,7 +52,7 @@ public class UIController implements Initializable {
                 outputField.setText(RunLengthEncoding.decompress(inputField.getText()));
                 break;
             case "Transform and Conquer":
-                outputField.setText(BurrowsWheelerTransform.compress(inputField.getText()));
+                outputField.setText(BurrowsWheelerTransform.decompress(inputField.getText()));
                 break;
             case "Greedy Technique":
                 outputField.setText(LempelZivWelch.decompress(inputField.getText()));
