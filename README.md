@@ -17,5 +17,6 @@ Some additional usage notes:
 - The UI is also scalable, so it can be maximized if you want to see more of your text at one time.
 - Decompressing using Transform and Conquer, or the Burrows-Wheeler Transform, may take long amounts of time with large numbers of characters (thousands). With inputs greater than 10,000 characters, the program may run out of memory and crash.
 - Brute Force may not yield good results with small inputs as repeated characters are necessary for it to work. The Transform and Conquer helps with this, but is still not always smaller. The Greedy Technique will always yield a smaller output.
+- Test files have been included in the project. They range from 1,000-4,000,000 characters (4 million character one will crash all but Brute Force).
 
 GitHub Link: https://github.com/asdarms/CS215Project
